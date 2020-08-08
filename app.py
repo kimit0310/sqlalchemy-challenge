@@ -6,16 +6,12 @@ from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 import datetime as dt
 
-
-
 engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 Measurement = Base.classes.measurement
 Station = Base.classes.station
-
 app = Flask(__name__)
-
 
 @app.route("/")
 def home():
@@ -26,7 +22,6 @@ def home():
         f"/api/v1.0/startdate (in YYYY-MM-DD format)<br/>"
         f"/api/v1.0/startdate/enddate (in YYYY-MM-DD format)"
     )
-
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
